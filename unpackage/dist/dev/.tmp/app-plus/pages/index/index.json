@@ -1,0 +1,35 @@
+{
+  "titleNView": {
+    "type": "transparent",
+    "searchInput": {
+      "align": "center",
+      "autoFocus": true,
+      "placeholder": "请输入地址 如：大钟寺",
+      "placeholderColor": "#606266",
+      "backgroundColor": "rgba(231, 231, 231,.7)",
+      "borderRadius": "16px"
+    },
+    "buttons": [
+      {
+        "type": "none",
+        "fontSrc": "/static/yticon.ttf",
+        "fontSize": "26px",
+        "text": "",
+        "color": "#303133",
+        "float": "left",
+        "background": "rgba(0,0,0,0)"
+      },
+      {
+        "type": "none",
+        "fontSrc": "/static/yticon.ttf",
+        "fontSize": "26px",
+        "text": "",
+        "color": "#303133",
+        "float": "right",
+        "background": "rgba(0,0,0,0)",
+        "redDot": true
+      }
+    ]
+  },
+  "usingComponents": {}
+}
