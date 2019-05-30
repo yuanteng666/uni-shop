@@ -8,10 +8,11 @@
 		
 		<!-- 头部轮播 -->
 		<view class="carousel-section">
+			<view class="titleNview-background" :style="{backgroundColor:titleNViewBackground}"></view>
+			
 			<!-- 标题栏和状态栏占位符 -->
 			<view class="titleNview-placing"></view>
 			<!-- 背景色区域 -->
-			<view class="titleNview-background" :style="{backgroundColor:titleNViewBackground}"></view>
 			<swiper class="carousel" circular @change="swiperChange">
 				<swiper-item v-for="(item, index) in carouselList" :key="index" class="carousel-item" @click="navToDetailPage({title: '轮播广告'})">
 					<image :src="item.src" />
@@ -77,6 +78,151 @@
 				</view>
 			</scroll-view>
 		</view>
+		
+		<!-- 团购楼层 -->
+		<view class="f-header m-t">
+			<image src="/static/temp/h1.png"></image>
+			<view class="tit-box">
+				<text class="tit">精品团购</text>
+				<text class="tit2">Boutique Group Buying</text>
+			</view>
+			<text class="yticon icon-you"></text>
+		</view>
+		<view class="group-section">
+			<swiper class="g-swiper" :duration="500">
+				<swiper-item class="g-swiper-item"
+				v-for="(item,index) in goodsList" :key="index"
+				v-if="index%2==0">
+					<view class="g-item left">
+						<image :src="item.image" mode="aspectFill"></image>
+						<view class="t-box">
+							<text class="title clamp">{{item.title}}</text>
+							<view class="price-box">
+								<text class="price">￥{{item.price}}</text>
+								<text class="m-price">￥178</text>
+							</view>
+							<view class="pro-box">
+								<view class="progress-box">
+									<progress percent="72" activeColor="#fa436a" active stroke-width="6" />
+								</view>
+								<text>6人成团</text>
+							</view>
+						</view>
+						
+					</view>
+					<view class="g-item right">
+						<view class="t-box">
+							<text class="title clamp">{{goodsList[index+1].title}}</text>
+							<view class="price-box">
+								<text class="price">￥{{goodsList[index+1].price}}</text>
+								<text class="m-price">￥158</text>
+							</view>
+							<view class="pro-box">
+								<view class="progress-box">
+									<progress percent="72" activeColor="#fa436a" active stroke-width="6"  />
+								</view>
+								<text>10人成团</text>
+							</view>
+						</view>
+						<image :src="goodsList[index+1].image" mode="aspectFill" class=""></image>
+						
+					</view>
+				</swiper-item>
+			</swiper>
+		</view>
+		
+		<!-- 分类精选 -->
+		<view class="f-header m-t">
+			<image src="/static/temp/h1.png"></image>
+			<view class="tit-box">
+				<text class="tit">分类精选</text>
+				<text class="tit2">Competitive Products For You</text>
+			</view>
+			<text class="yticon icon-you"></text>
+		</view>
+		<view class="hot-floor">
+			<view class="floor-img-box">
+				<image class="floor-img" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553409398864&di=4a12763adccf229133fb85193b7cc08f&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201703%2F19%2F20170319150032_MNwmn.jpeg" mode="scaleToFill"></image>
+			</view>
+			<scroll-view scroll-x class="floor-list">
+				<view class="scroll-wrapper">
+					<view 
+						v-for="(item, index) in goodsList" :key="index"
+						class="floor-item"
+						@click="navToDetailPage(item)"
+					>
+						<image :src="item.image" mode="aspectFill"></image>
+						<text class="title clamp">{{item.title}}</text>
+						<text class="price">￥{{item.price}}</text>
+					</view>
+				</view>
+				
+			</scroll-view>
+		</view>
+		
+		<view class="hot-floor">
+			<view class="floor-img-box">
+				<image class="floor-img" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553409984228&di=dee176242038c2d545b7690b303d65ea&imgtype=0&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2F5ef4da9f17faaf4612f0d5046f4161e556e9bbcfdb5b-rHjf00_fw658" mode="scaleToFill"></image>
+			</view>
+			<scroll-view scroll-x class="floor-list">
+				<view class="scroll-wrapper">
+					<view 
+						v-for="(item, index) in goodsList" :key="index"
+						class="floor-item"
+						@click="navToDetailPage(item)"
+					>
+						<image :src="item.image2" mode="aspectFill"></image>
+						<text class="title clamp">{{item.title}}</text>
+						<text class="price">￥{{item.price}}</text>
+					</view>
+				</view>
+				
+			</scroll-view>
+		</view>
+		
+		<view class="hot-floor">
+			<view class="floor-img-box">
+				<image class="floor-img" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553409794730&di=12b840ec4f5748ef06880b85ff63e34e&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01dc03589ed568a8012060c82ac03c.jpg%40900w_1l_2o_100sh.jpg" mode="scaleToFill"></image>
+			</view>
+			<scroll-view scroll-x class="floor-list">
+				<view class="scroll-wrapper">
+					<view 
+						v-for="(item, index) in goodsList" :key="index"
+						class="floor-item"
+						@click="navToDetailPage(item)"
+					>
+						<image :src="item.image3" mode="aspectFill"></image>
+						<text class="title clamp">{{item.title}}</text>
+						<text class="price">￥{{item.price}}</text>
+					</view>
+				</view>
+				
+			</scroll-view>
+		</view>
+		
+		<!-- 猜你喜欢 -->
+		<view class="f-header m-t">
+			<image src="/static/temp/h1.png"></image>
+			<view class="tit-box">
+				<text class="tit">猜你喜欢</text>
+				<text class="tit2">Guess You Like It</text>
+			</view>
+			<text class="yticon icon-you"></text>
+		</view>
+		
+		<view class="guess-section">
+			<view 
+				v-for="(item, index) in goodsList" :key="index"
+				class="guess-item"
+				@click="navToDetailPage(item)"
+			>
+				<view class="image-wrapper">
+					<image :src="item.image" mode="aspectFill"></image>
+				</view>
+				<text class="title clamp">{{item.title}}</text>
+				<text class="price">￥{{item.price}}</text>
+			</view>
+		</view>
 	</view>
 </template>
 
@@ -119,14 +265,14 @@
 				//测试数据没有写id，用title代替
 				let id = item.title;
 				uni.navigateTo({
-					url: `/pages/product/product?id=${id}`
+					url: "../good-detail/good-detail"
 				})
 			},
 		}
 	}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 	/* #ifdef MP */
 	.mp-search-box{
 		position: absolute;
@@ -185,7 +331,7 @@
 	
 		.titleNview-placing {
 			height: var(--status-bar-height);
-			padding-top: 44px;
+			margin-top: 44px;
 			box-sizing: content-box;
 		}
 	
@@ -345,7 +491,201 @@
 					.price{
 						color: $uni-color-primary;
 					}
+			}
+		}
+	}
+	.f-header{
+		display: flex;
+		flex-direction: row;
+		height: 140upx;
+		align-items: center;
+		background: white;
+		padding: 4upx 30upx 24upx;
+		image{
+			width: 80upx;
+			height: 80upx;
+			margin-right: 20upx;
+		}
+		.tit-box{
+			display: flex;
+			flex-direction: column;
+		}
+		.tit{
+			font-size: $font-lg +2upx;
+			color: #font-color-dark;
+			line-height: 1.3;
+		}
+		.tit2{
+			font-size: $font-sm;
+			color: $font-color-light;
+		}
+		.icon-you{
+				flex: 1;
+				text-align: right;
+				font-size: $font-lg;
+				color: $font-color-light;
+		}
+	}
+	.group-section{
+		background: white;
+		.g-swiper{
+			height: 650upx;
+			padding-bottom: 30upx;
+		}
+		image{
+			border-radius: 8upx;
+			width: 100%;
+			height: 460upx;
+		}
+		.g-swiper-item{
+			display: flex;
+			flex-direction: row;
+			padding: 0 30upx;
+		}
+		.g-item{
+			display: flex;
+			flex-direction: column;
+			overflow: hidden;
+		}
+		.title{
+			overflow: nowrap;
+		}
+		.left{
+			flex: 1.2;
+			margin-right: 20upx;
+			.t-box{
+				padding-top: 20upx;
+			}
+		}
+		.right{
+			flex: 0.8;
+			.t-box{
+				padding-bottom: 20upx;
+			}
+		}
+		.t-box{
+			height: 160upx;
+			font-size: $font-base+2upx;
+			color: $font-color-dark;
+			line-height: 1.6;
+		}
+		.price{
+			color:$uni-color-primary;
+		}
+		.m-price{
+			font-size: $font-sm+2upx;
+			text-decoration: line-through;
+			color: $font-color-light;
+			margin-left: 8upx;
+		}
+		.pro-box{
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			padding-right:10upx;
+			font-size: $font-sm;
+			color: $font-base;
+		}
+		.progress-box{
+			flex: 1;
+			border-radius: 10px;
+			overflow: hidden;
+			margin-right: 8upx;
+		}
+	}
+	.hot-floor{
+		width: 100%;
+		margin-bottom: 20upx;
+		overflow: hidden;
+		.floor-img-box{
+			width: 100%;
+			height:320upx;
+			position: relative;
+			&:after{
+				content: '';
+				position:absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(rgba(255,255,255,.06) 30%, #f8f8f8);
+			}
+		}
+		.floor-img{
+			width: 100%;
+			height: 100%;
+		}
+		.floor-list{
+			position: relative;
+			z-index: 1;
+			white-space: nowrap;
+			border-radius: 6upx;
+			margin-top:-140upx;
+			margin-left: 30upx;
+			background: white;
+			padding: 20upx;
+			box-shadow: 1px 1px 5px rgba(0,0,0,.2);
+		}
+		
+		.scroll-wrapper{
+			display: flex;
+			flex-direction: row;
+		}
+		.floor-item{
+				display: flex;
+				flex-direction: column;
+				width: 180upx;
+				margin-right: 20upx;
+				font-size: $font-sm+2upx;
+				color: $font-color-dark;
+				line-height: 1.8;
+				image{
+					width: 180upx;
+					height: 180upx;
+					border-radius: 6upx;
 				}
+				.price{
+					color: $uni-color-primary;
+				}
+		}
+	}
+	.guess-section{
+		width: 100%;
+		padding: 0 30upx;
+		background: #fff;
+		display: flex;
+		flex-direction: row;
+		flex-flow: wrap;
+		.guess-item{
+			display: inline-block;
+			width: 48%;
+			padding-bottom: 40upx;
+			display: flex;
+			flex-direction: column;
+		}
+		.guess-item:nth-child(2n+1){
+			margin-right: 4%;
+		}
+		.image-wrapper{
+			width: 100%;
+			height: 330upx;
+			border-radius: 3px;
+			overflow: hidden;
+			image{
+				width: 100%;
+				height: 100%;
+				opacity: 1;
+			}
+		}
+		.title{
+			font-size: $font-lg;
+			color: $font-color-dark;
+			line-height: 80upx;
+		}
+		.price{
+			font-size: $font-lg;
+			color: $uni-color-primary;
+			line-height: 1;
 		}
 	}
 </style>
