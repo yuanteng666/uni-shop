@@ -130,6 +130,53 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -143,7 +190,64 @@ var _default =
         src: 'https://gd3.alicdn.com/imgextra/i3/TB1RPFPPFXXXXcNXpXXXXXXXXXX_!!0-item_pic.jpg_400x400.jpg' },
 
       {
-        src: 'https://gd2.alicdn.com/imgextra/i2/38832490/O1CN01IYq7gu1UGShvbEFnd_!!38832490.jpg_400x400.jpg' }] };
+        src: 'https://gd2.alicdn.com/imgextra/i2/38832490/O1CN01IYq7gu1UGShvbEFnd_!!38832490.jpg_400x400.jpg' }],
+
+
+      specList: [
+      {
+        id: 1,
+        name: '尺寸' },
+
+      {
+        id: 2,
+        name: '颜色' }],
+
+
+      specChildList: [
+      {
+        id: 1,
+        pid: 1,
+        name: 'XS' },
+
+      {
+        id: 2,
+        pid: 1,
+        name: 'S' },
+
+      {
+        id: 3,
+        pid: 1,
+        name: 'M' },
+
+      {
+        id: 4,
+        pid: 1,
+        name: 'L' },
+
+      {
+        id: 5,
+        pid: 1,
+        name: 'XL' },
+
+      {
+        id: 6,
+        pid: 1,
+        name: 'XXL' },
+
+      {
+        id: 7,
+        pid: 2,
+        name: '白色' },
+
+      {
+        id: 8,
+        pid: 2,
+        name: '珊瑚粉' },
+
+      {
+        id: 9,
+        pid: 2,
+        name: '草木绿' }] };
 
 
 
