@@ -1,7 +1,9 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/good-detail/good-detail"
+    "pages/good-detail/good-detail",
+    "pages/createOrder/createOrder",
+    "pages/address/address"
   ],
   "subPackages": [],
   "window": {

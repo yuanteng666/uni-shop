@@ -500,81 +500,190 @@ page {
       background: transparent;
       color: white;
 }
+.popup {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+}
 .popup .mask {
-  background: #999999;
-  opacity: 0.3;
+    position: flex;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+.popup.show {
+    display: block;
+}
+.popup.show .mask {
+      -webkit-animation: showPopup linear 0.2s both;
+              animation: showPopup linear 0.2s both;
+}
+.popup.show .layer {
+      -webkit-animation: showLayer linear 0.2s both;
+              animation: showLayer linear 0.2s both;
+}
+.popup.hide .mask {
+    -webkit-animation: hidePopup linear 0.2s both;
+            animation: hidePopup linear 0.2s both;
+}
+.popup.hide .layer {
+    -webkit-animation: hideLayer linear 0.2s both;
+            animation: hideLayer linear 0.2s both;
+}
+.popup.none {
+    display: none;
+}
+@-webkit-keyframes showPopup {
+0% {
+    opacity: 0;
+}
+100% {
+    opacity: 1;
+}
+}
+@keyframes showPopup {
+0% {
+    opacity: 0;
+}
+100% {
+    opacity: 1;
+}
+}
+@-webkit-keyframes hidePopup {
+100% {
+    opacity: 1;
+}
+0% {
+    opacity: 0;
+}
+}
+@keyframes hidePopup {
+100% {
+    opacity: 1;
+}
+0% {
+    opacity: 0;
+}
+}
+@-webkit-keyframes showLayer {
+0% {
+    -webkit-transform: translateY(120%);
+            transform: translateY(120%);
+}
+100% {
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+}
+}
+@keyframes showLayer {
+0% {
+    -webkit-transform: translateY(120%);
+            transform: translateY(120%);
+}
+100% {
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+}
+}
+@-webkit-keyframes hideLayer {
+0% {
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+}
+100% {
+    -webkit-transform: translateY(120%);
+            transform: translateY(120%);
+}
+}
+@keyframes hideLayer {
+0% {
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+}
+100% {
+    -webkit-transform: translateY(120%);
+            transform: translateY(120%);
+}
 }
 .popup .layer {
-  background: white;
-  padding: 20rpx;
+    position: fixed;
+    z-index: 99;
+    bottom: 0;
+    width: 100%;
+    background: white;
+    padding: 20rpx;
 }
 .popup .layer .a-t {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: row;
-        -ms-flex-direction: row;
-            flex-direction: row;
-}
-.popup .layer .a-t text {
-      padding-top: 10rpx;
-      padding-bottom: 10rpx;
-}
-.popup .layer .a-t image {
-      width: 170rpx;
-      height: 170rpx;
-      border-radius: 10rpx;
-      margin-bottom: -50rpx;
-}
-.popup .layer .a-t .right {
-      margin-left: 20rpx;
       display: -webkit-box;
       display: -webkit-flex;
       display: -ms-flexbox;
       display: flex;
-      -webkit-box-orient: vertical;
+      -webkit-box-orient: horizontal;
       -webkit-box-direction: normal;
-      -webkit-flex-direction: column;
-          -ms-flex-direction: column;
-              flex-direction: column;
-      height: 170rpx;
-      font-size: 30rpx;
-      color: gray;
-      vertical-align: bottom;
+      -webkit-flex-direction: row;
+          -ms-flex-direction: row;
+              flex-direction: row;
+}
+.popup .layer .a-t text {
+        padding-top: 10rpx;
+        padding-bottom: 10rpx;
+}
+.popup .layer .a-t image {
+        width: 170rpx;
+        height: 170rpx;
+        border-radius: 10rpx;
+        margin-top: -40rpx;
+}
+.popup .layer .a-t .right {
+        margin-left: 20rpx;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        height: 170rpx;
+        font-size: 30rpx;
+        color: gray;
+        vertical-align: bottom;
 }
 .popup .layer .a-t .right .price {
-        font-size: 32rpx;
-        color: #fa436a;
+          font-size: 32rpx;
+          color: #fa436a;
 }
 .popup .layer .attr-list {
-    margin-top: 20rpx;
-}
-.popup .layer .attr-list .item-list {
-      margin-bottom: 30rpx;
       margin-top: 20rpx;
 }
+.popup .layer .attr-list .item-list {
+        margin-bottom: 30rpx;
+        margin-top: 20rpx;
+}
 .popup .layer .attr-list .item-list text {
-        background: lightgrey;
-        border-radius: 100rpx;
-        color: black;
-        padding: 15rpx;
-        font-size: 32rpx;
-        margin-right: 20rpx;
-        opacity: 0.6;
-        min-width: 70rpx;
-        text-align: center;
-        display: inline-block;
+          background: lightgrey;
+          border-radius: 100rpx;
+          color: black;
+          padding: 15rpx;
+          font-size: 32rpx;
+          margin-right: 20rpx;
+          opacity: 0.6;
+          min-width: 70rpx;
+          text-align: center;
+          display: inline-block;
 }
 .popup .layer .attr-list .item-list .selected {
-        background: #F56C6C;
-        color: #fa436a;
+          background: #F56C6C;
+          color: #fa436a;
 }
 .popup .btn {
-  background: #fa436a;
-  border-radius: 100rpx;
-  color: white;
+    background: #fa436a;
+    border-radius: 100rpx;
+    color: white;
 }
 

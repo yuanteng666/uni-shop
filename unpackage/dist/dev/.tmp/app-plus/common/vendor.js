@@ -737,6 +737,40 @@ createApp(app).$mount();
 
 /***/ }),
 
+/***/ "../../../../../testdemo/shop-test/main.js?{\"page\":\"pages%2Faddress%2Faddress\"}":
+/*!**************************************************************************!*\
+  !*** D:/testdemo/shop-test/main.js?{"page":"pages%2Faddress%2Faddress"} ***!
+  \**************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../testdemo/shop-test/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _address = _interopRequireDefault(__webpack_require__(/*! ./pages/address/address.vue */ "../../../../../testdemo/shop-test/pages/address/address.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_address.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../../../testdemo/shop-test/main.js?{\"page\":\"pages%2FcreateOrder%2FcreateOrder\"}":
+/*!**********************************************************************************!*\
+  !*** D:/testdemo/shop-test/main.js?{"page":"pages%2FcreateOrder%2FcreateOrder"} ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../testdemo/shop-test/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _createOrder = _interopRequireDefault(__webpack_require__(/*! ./pages/createOrder/createOrder.vue */ "../../../../../testdemo/shop-test/pages/createOrder/createOrder.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_createOrder.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["createPage"]))
+
+/***/ }),
+
 /***/ "../../../../../testdemo/shop-test/main.js?{\"page\":\"pages%2Fgood-detail%2Fgood-detail\"}":
 /*!**********************************************************************************!*\
   !*** D:/testdemo/shop-test/main.js?{"page":"pages%2Fgood-detail%2Fgood-detail"} ***!

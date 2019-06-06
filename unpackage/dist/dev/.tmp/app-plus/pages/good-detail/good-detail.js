@@ -275,6 +275,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
 {
   components: {
     uniPopup: uniPopup,
@@ -282,6 +287,7 @@ __webpack_require__.r(__webpack_exports__);
 
   data: function data() {
     return {
+      specClass: 'none',
       type: '',
       specSelected: [],
       imgList: [
@@ -361,7 +367,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-      favorite: true };
+      favorite: true,
+      shareList: [] };
 
   },
   onLoad: function () {var _onLoad = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(options) {var _this = this;var id;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
@@ -433,7 +440,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     buy: function buy() {
       uni.navigateTo({
-        url: "/pages/order/createOrder" });
+        url: "../createOrder/createOrder" });
 
     },
     stopPrevent: function stopPrevent() {} } };exports.default = _default;

@@ -43,7 +43,7 @@
 		</view>
 		
 		<view class="c-list">
-			<view class="c-row b-b" @click="togglePopup('bottom-share')">
+			<view class="c-row b-b" @click="toggleSpec">
 				<text class="tit">购买类型</text>
 				<view class="con">
 					<text class="selected-text" v-for="(sItem, sIndex) in specSelected" :key="sIndex">
@@ -126,48 +126,53 @@
 		
 		<!-- 规格-模态层弹窗 -->
 		
-		<uni-popup :show="type === 'bottom-share'" position="bottom" @hidePopup="togglePopup('')">
-			<view 
-				class="popup spec" 
-				:class="specClass"
-				@touchmove.stop.prevent="stopPrevent"
-				@click="toggleSpec"
-			>
-				<!-- 遮罩层 -->
-				<view class="mask"></view>
-				<view class="layer attr-content" @click.stop="stopPrevent">
-					<view class="a-t">
-						<image src="https://gd3.alicdn.com/imgextra/i3/0/O1CN01IiyFQI1UGShoFKt1O_!!0-item_pic.jpg_400x400.jpg"></image>
-						<view class="right">
-							<text class="price">¥328.00</text>
-							<text class="stock">库存：188件</text>
-							<view class="selected">
-								已选：
-								<text class="selected-text" v-for="(sItem, sIndex) in specSelected" :key="sIndex">
-									{{sItem.name}}
-								</text>
-							</view>
-						</view>
-					</view>
-					<view v-for="(item,index) in specList" :key="index" class="attr-list">
-						<text>{{item.name}}</text>
-						<view class="item-list">
-							<text 
-								v-for="(childItem, childIndex) in specChildList" 
-								v-if="childItem.pid === item.id"
-								:key="childIndex" class="tit"
-								:class="{selected: childItem.selected}"
-								@click="selectSpec(childIndex, childItem.pid)"
-							>
-								{{childItem.name}}
+		
+		<view 
+			class="popup spec" 
+			:class="specClass"
+			@touchmove.stop.prevent="stopPrevent"
+			@click="toggleSpec"
+		>
+			<!-- 遮罩层 -->
+			<view class="mask"></view>
+			<view class="layer attr-content" @click.stop="stopPrevent">
+				<view class="a-t">
+					<image src="https://gd3.alicdn.com/imgextra/i3/0/O1CN01IiyFQI1UGShoFKt1O_!!0-item_pic.jpg_400x400.jpg"></image>
+					<view class="right">
+						<text class="price">¥328.00</text>
+						<text class="stock">库存：188件</text>
+						<view class="selected">
+							已选：
+							<text class="selected-text" v-for="(sItem, sIndex) in specSelected" :key="sIndex">
+								{{sItem.name}}
 							</text>
 						</view>
 					</view>
-					<button class="btn" @click="toggleSpec">完成</button>
 				</view>
+				<view v-for="(item,index) in specList" :key="index" class="attr-list">
+					<text>{{item.name}}</text>
+					<view class="item-list">
+						<text 
+							v-for="(childItem, childIndex) in specChildList" 
+							v-if="childItem.pid === item.id"
+							:key="childIndex" class="tit"
+							:class="{selected: childItem.selected}"
+							@click="selectSpec(childIndex, childItem.pid)"
+						>
+							{{childItem.name}}
+						</text>
+					</view>
+				</view>
+				<button class="btn" @click="toggleSpec">完成</button>
 			</view>
-			
-		</uni-popup>
+		</view>
+			<!-- 分享 -->
+		<share 
+			ref="share" 
+			:contentHeight="580"
+			:shareList="shareList"
+		></share>
+		
 		
 	</view>
 </template>
@@ -182,6 +187,7 @@
 		},
 		data() {
 			return {
+				specClass: 'none',
 				type:'',
 				specSelected:[],
 				imgList: [
@@ -261,7 +267,8 @@
 						<img style="width:100%;display:block;" src="https://gd1.alicdn.com/imgextra/i1/479184430/O1CN01Tnm1rU1iaz4aVKcwP_!!479184430.jpg_400x400.jpg" />
 					</div>
 				`,
-				favorite:true
+				favorite:true,
+				shareList: [],
 			}
 		},
 		async	onLoad(options) {
@@ -333,7 +340,7 @@
 			},
 			buy(){
 				uni.navigateTo({
-					url: `/pages/order/createOrder`
+					url: "../createOrder/createOrder"
 				})
 			},
 			stopPrevent(){}
@@ -685,11 +692,77 @@ page{
 	}
 }
 .popup{
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 99;
 	.mask{
-		background: #999999;
-		opacity: 0.3;
+		position: flex;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.4);
+		z-index: 1;
+	}
+	&.show{
+		display: block;
+		.mask{
+			animation: showPopup linear 0.2s both;
+		}
+		.layer{
+			animation: showLayer linear 0.2s both;
+		}
+	}
+	&.hide{
+		.mask{
+			animation: hidePopup linear 0.2s both;
+		}
+		.layer{
+			animation: hideLayer linear 0.2s both;
+		}
+	}
+	&.none{
+		display: none;
+	}
+	@keyframes showPopup{
+		0%{
+			opacity: 0;
+		}
+		100%{
+			opacity: 1;
+		}
+	}
+	@keyframes hidePopup{
+		100%{
+			opacity: 1;
+		}
+		0%{
+			opacity: 0;
+		}
+	}
+	@keyframes showLayer{
+		0% {
+			transform: translateY(120%);
+		}
+		100%{
+			transform: translateY(0%)
+		}
+	}
+	
+	@keyframes hideLayer{
+		0% {
+			transform: translateY(0%)
+		}
+		100%{
+			transform: translateY(120%)
+		}
 	}
 	.layer{
+		position: fixed;
+		z-index: 99;
+		bottom: 0;
+		width: 100%;
 		background: white;
 		padding: 20upx;
 		.a-t{
@@ -703,7 +776,7 @@ page{
 				width: 170upx;
 				height: 170upx;
 				border-radius: 10upx;
-				margin-bottom: -50upx;
+				margin-top: -40upx;
 			}
 			.right{
 				margin-left: 20upx;
