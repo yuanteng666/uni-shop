@@ -98,7 +98,111 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -150,7 +254,29 @@ var _default =
 
 
   },
-  methods: {} };exports.default = _default;
+  methods: {
+    //显示优惠券面板
+    toggleMask: function toggleMask(type) {var _this = this;
+      var timer = type === 'show' ? 10 : 300;
+      var state = type === 'show' ? 1 : 0;
+      this.maskState = 2;
+      setTimeout(function () {
+        _this.maskState = state;
+      }, timer);
+    },
+    numberChange: function numberChange(data) {
+      this.number = data.number;
+    },
+    changePayType: function changePayType(type) {
+      this.payType = type;
+    },
+    submit: function submit() {
+      uni.redirectTo({
+        url: '/pages/money/pay' });
+
+    },
+    stopPrevent: function stopPrevent() {} } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-app-plus/dist/index.js */ "./node_modules/@dcloudio/uni-app-plus/dist/index.js")["default"]))
 
 /***/ }),
 

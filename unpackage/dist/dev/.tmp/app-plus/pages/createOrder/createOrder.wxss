@@ -5,7 +5,12 @@
 /* 边框颜色 */
 /* 图片加载中颜色 */
 /* 行为相关颜色 */
+page {
+  background: #f8f8f8;
+  padding-bottom: 100rpx;
+}
 .address-section {
+  background: white;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -27,8 +32,13 @@
         -ms-flex-direction: row;
             flex-direction: row;
     padding: 20rpx 30rpx;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 .address-section .order-content .cen {
+      margin-left: 20rpx;
       display: -webkit-box;
       display: -webkit-flex;
       display: -ms-flexbox;
@@ -38,7 +48,7 @@
       -webkit-flex-direction: column;
           -ms-flex-direction: column;
               flex-direction: column;
-      font-size: 28rpx;
+      font-size: 32rpx;
       color: black;
 }
 .address-section .order-content .cen .top {
@@ -53,7 +63,257 @@
                 flex-direction: row;
 }
 .address-section .order-content .cen .address {
+        margin-top: 10rpx;
         color: gray;
-        font-size: 26rpx;
+        font-size: 30rpx;
+}
+.address-section .order-content .icon-you {
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+          -ms-flex: 1;
+              flex: 1;
+      text-align: right;
+}
+.address-section .a-bg {
+    width: 100%;
+    height: 5rpx;
+}
+.goods-section {
+  margin-top: 20rpx;
+  background: white;
+}
+.goods-section .g-header {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    padding: 0 30rpx;
+    height: 84rpx;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-bottom: 1rpx;
+    border-bottom: 1rpx solid #f8f8f8;
+}
+.goods-section .g-header .logo {
+      width: 70rpx;
+      height: 70rpx;
+      border-radius: 100rpx;
+}
+.goods-section .g-header .name {
+      margin-left: 20rpx;
+      color: black;
+      font-size: 32rpx;
+      color: #888888;
+}
+.goods-section .g-item {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    padding: 10rpx 30rpx 10rpx 30rpx;
+}
+.goods-section .g-item image {
+      width: 140rpx;
+      height: 140rpx;
+      border-radius: 4rpx;
+}
+.goods-section .g-item .right {
+      margin-left: 10rpx;
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+          -ms-flex: 1;
+              flex: 1;
+      overflow: hidden;
+}
+.goods-section .g-item .right .title {
+        font-size: 30rpx;
+        color: black;
+}
+.goods-section .g-item .right .spec {
+        padding-top: 10rpx;
+        font-size: 28rpx;
+        color: gray;
+}
+.goods-section .g-item .right .price-box {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: row;
+            -ms-flex-direction: row;
+                flex-direction: row;
+        padding-top: 10rpx;
+}
+.goods-section .g-item .right .price {
+        font-size: 30rpx;
+        color: black;
+}
+.goods-section .g-item .right .number {
+        font-size: 28rpx;
+        color: gray;
+}
+.yt-list {
+  margin-top: 20rpx;
+  background: white;
+}
+.yt-list .yt-list-cell {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 20rpx 30rpx 20rpx 30rpx;
+}
+.yt-list .yt-list-cell .cell-icon {
+      border-radius: 4rpx;
+      color: white;
+      font-size: 28rpx;
+      background: #fa436a;
+      padding: 10rpx;
+      margin-right: 20rpx;
+}
+.yt-list .yt-list-cell .hb {
+      background: orange;
+}
+.yt-list .yt-list-cell .cell-tit {
+      color: #888888;
+      font-size: 28rpx;
+}
+.yt-list .yt-list-cell .cell-tip {
+      color: #888888;
+      font-size: 28rpx;
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+          -ms-flex: 1;
+              flex: 1;
+      text-align: right;
+}
+.yt-list .yt-list-cell .active, .yt-list .yt-list-cell .red {
+      color: #fa436a;
+}
+.yt-list .yt-list-cell .desc {
+      color: #888888;
+      font-size: 28rpx;
+      margin-left: 20rpx;
+}
+.yt-list .b-b {
+    border-bottom: 1rpx solid #f8f8f8;
+}
+.footer {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  height: 100rpx;
+  background: white;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+.footer .price-content {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    color: #888888;
+    height: 100rpx;
+    line-height: 100rpx;
+    padding-left: 30rpx;
+    font-size: 28rpx;
+}
+.footer .price-content .price-tip {
+      margin-left: 20rpx;
+      font-size: 28rpx;
+      color: #fa436a;
+}
+.footer .price-content .price {
+      font-size: 32rpx;
+      color: #fa436a;
+}
+.footer .submit {
+    background: #fa436a;
+    font-size: 32rpx;
+    color: white;
+    padding-left: 20rpx;
+    padding-right: 20rpx;
+    height: 100rpx;
+    line-height: 100rpx;
+    text-align: center;
+}
+.mask {
+  background: #f8f8f8;
+  padding: 30rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.mask .mask-content .coupon-item {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+}
+.mask .mask-content .coupon-item .con {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: row;
+          -ms-flex-direction: row;
+              flex-direction: row;
+}
+.mask .mask-content .coupon-item .con .left .title {
+        font-size: 32rpx;
+        color: black;
 }
 
