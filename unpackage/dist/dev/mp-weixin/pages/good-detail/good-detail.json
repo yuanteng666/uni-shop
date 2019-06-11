@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "详情提示",
-  "usingComponents": {
-    "uni-popup": "/components/uni-popup/uni-popup",
-    "share": "/components/share"
-  }
-}
