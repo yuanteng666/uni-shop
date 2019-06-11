@@ -72,7 +72,8 @@ page {
     background: #fa436a;
     font-size: 24rpx;
     color: #fff;
-    border-radius: 6rpx;
+    -webkit-border-radius: 6rpx;
+            border-radius: 6rpx;
     line-height: 1;
     -webkit-transform: translateY(-4rpx);
         -ms-transform: translateY(-4rpx);
@@ -117,6 +118,7 @@ page {
           align-items: center;
   color: #606266;
   background: -webkit-gradient(linear, left top, right top, from(#fdf5f6), to(#fbebf6));
+  background: -webkit-linear-gradient(left, #fdf5f6, #fbebf6);
   background: -o-linear-gradient(left, #fdf5f6, #fbebf6);
   background: linear-gradient(left, #fdf5f6, #fbebf6);
   padding: 12rpx 30rpx;
@@ -134,7 +136,8 @@ page {
     height: 30rpx;
     line-height: 30rpx;
     border: 1px solid #fa436a;
-    border-radius: 4rpx;
+    -webkit-border-radius: 4rpx;
+            border-radius: 4rpx;
     position: relative;
     overflow: hidden;
     font-size: 22rpx;
@@ -144,7 +147,8 @@ page {
       content: '';
       width: 50rpx;
       height: 50rpx;
-      border-radius: 50%;
+      -webkit-border-radius: 50%;
+              border-radius: 50%;
       left: -20rpx;
       top: -12rpx;
       position: absolute;
@@ -308,7 +312,8 @@ page {
               flex-shrink: 0;
       width: 80rpx;
       height: 80rpx;
-      border-radius: 100px;
+      -webkit-border-radius: 100px;
+              border-radius: 100px;
 }
 .eva-section .eva-box .right {
       display: -webkit-box;
@@ -406,7 +411,8 @@ page {
   background: rgba(255, 255, 255, 0.9);
   -webkit-box-shadow: 0 0 20rpx 0 rgba(0, 0, 0, 0.5);
           box-shadow: 0 0 20rpx 0 rgba(0, 0, 0, 0.5);
-  border-radius: 16rpx;
+  -webkit-border-radius: 16rpx;
+          border-radius: 16rpx;
   margin: 20rpx;
   padding: 10rpx;
   position: fixed;
@@ -459,10 +465,12 @@ page {
     -webkit-box-shadow: 1px 2px 5px rgba(219, 63, 96, 0.4);
             box-shadow: 1px 2px 5px rgba(219, 63, 96, 0.4);
     background: -webkit-gradient(linear, left top, right top, from(#ffac30), color-stop(#fa436a), to(#F56C6C));
+    background: -webkit-linear-gradient(left, #ffac30, #fa436a, #F56C6C);
     background: -o-linear-gradient(left, #ffac30, #fa436a, #F56C6C);
     background: linear-gradient(to right, #ffac30, #fa436a, #F56C6C);
     margin-left: 20rpx;
-    border-radius: 100rpx;
+    -webkit-border-radius: 100rpx;
+            border-radius: 100rpx;
     color: white;
     padding: 10rpx;
     position: relative;
@@ -496,7 +504,8 @@ page {
       height: 100%;
       font-size: 32rpx;
       padding: 0;
-      border-radius: 0;
+      -webkit-border-radius: 0;
+              border-radius: 0;
       background: transparent;
       color: white;
 }
@@ -635,7 +644,8 @@ page {
 .popup .layer .a-t image {
         width: 170rpx;
         height: 170rpx;
-        border-radius: 10rpx;
+        -webkit-border-radius: 10rpx;
+                border-radius: 10rpx;
         margin-top: -40rpx;
 }
 .popup .layer .a-t .right {
@@ -667,7 +677,8 @@ page {
 }
 .popup .layer .attr-list .item-list text {
           background: lightgrey;
-          border-radius: 100rpx;
+          -webkit-border-radius: 100rpx;
+                  border-radius: 100rpx;
           color: black;
           padding: 15rpx;
           font-size: 32rpx;
@@ -683,7 +694,8 @@ page {
 }
 .popup .btn {
     background: #fa436a;
-    border-radius: 100rpx;
+    -webkit-border-radius: 100rpx;
+            border-radius: 100rpx;
     color: white;
 }
 

@@ -372,20 +372,51 @@ page {
 	flex-direction: column;
 	.mask-content{
 		.coupon-item{
+			border-radius: 10upx;
+			background: white;
 			display: flex;
 			flex-direction: column;
+			padding: 30upx 20upx;
+			margin-top: 20upx;
 			.con{
 				display: flex;
 				flex-direction: row;
+				border-bottom: 1px dashed #f3f3f3;
 				.left{
+					display: flex;
+					flex-direction: column;
+					font-size: $font-lg - 2upx;
+					flex: 1;
 					.title{
 						font-size: $font-lg;
 						color: black;
+						padding-top: 20upx;
+						padding-bottom: 20upx;
 					}
 				}
 				.right{
-					
+					display: flex;
+					flex-direction: column;
+					font-size: $font-lg - 2upx;
+					color: #888888;
+					justify-content: center;
+					align-items: center;
+		
+					.price{
+						font-size: $font-lg ;
+						color: $uni-color-primary;
+						&:before{
+							content: '￥';
+							font-size: 34upx;
+						}
+					}
 				}
+			}
+			.tips{
+				padding-top: 10upx;
+				
+				font-size: $font-lg - 2upx;
+				color: #888888;
 			}
 		}
 	}

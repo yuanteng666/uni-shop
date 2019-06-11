@@ -12,11 +12,12 @@
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
   },
+  "nvueCompiler": "weex",
   "splashscreen": {
     "alwaysShowBeforeRender": true,
     "autoclose": false
   },
   "appname": "shop-test",
-  "compilerVersion": "1.9.9",
+  "compilerVersion": "2.0.0",
   "usingComponents": {}
 }
