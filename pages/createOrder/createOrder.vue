@@ -1,6 +1,7 @@
 <template>
 	<view>
 		<!-- 地址 -->
+		<!-- 添加一个注释 测试 git remove -->
 		<navigator url="/pages/address/address?source=1" class="address-section">
 			<view class="order-content">
 				<text class="yticon icon-shouhuodizhi"></text>
