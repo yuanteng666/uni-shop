@@ -125,7 +125,9 @@
 </template>
 
 <script>
+	
 	export default {
+
 		data() {
 			return {
 				maskState: 0, //优惠券面板显示状态
@@ -173,7 +175,7 @@
 			},
 			submit(){
 				uni.redirectTo({
-					url: '/pages/money/pay'
+					url: '/pages/pay/pay'
 				})
 			},
 			stopPrevent(){}
@@ -367,59 +369,85 @@ page {
 	}
 }
 .mask{
-	background: $page-color-base;
-	padding: 30upx;
+	
+	display: flex;
+	align-items: flex-end;
+	vertical-align: bottom;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	top: var(--window-top);
+	background: rgba(0,0,0,0);
+	transition: 0.3s;
+	z-index: 9995;
+	width: 100%;
+	
+	.mask-content{
+		width: 100%;
+		min-height: 30vh;
+		max-height: 70vh;
+		background: #F3F3F3;
+		transition: 0.3s;
+		transform:translateY(100%);
+		overflow-y: scroll;
+	}
+	&.none{
+		display: none;
+	}
+	&.show{
+		background: rgba(0,0,0,.4);
+		.mask-content{
+			transform: translateX(0);
+		}
+	}
+}
+.coupon-item{
+	border-radius: 10upx;
+	background: white;
 	display: flex;
 	flex-direction: column;
-	.mask-content{
-		.coupon-item{
-			border-radius: 10upx;
-			background: white;
+	padding: 30upx 20upx;
+	margin-top: 20upx;
+	margin-left: 10upx;
+	margin-bottom: 10upx;
+	.con{
+		display: flex;
+		flex-direction: row;
+		border-bottom: 1px dashed #f3f3f3;
+		.left{
 			display: flex;
 			flex-direction: column;
-			padding: 30upx 20upx;
-			margin-top: 20upx;
-			.con{
-				display: flex;
-				flex-direction: row;
-				border-bottom: 1px dashed #f3f3f3;
-				.left{
-					display: flex;
-					flex-direction: column;
-					font-size: $font-lg - 2upx;
-					flex: 1;
-					.title{
-						font-size: $font-lg;
-						color: black;
-						padding-top: 20upx;
-						padding-bottom: 20upx;
-					}
-				}
-				.right{
-					display: flex;
-					flex-direction: column;
-					font-size: $font-lg - 2upx;
-					color: #888888;
-					justify-content: center;
-					align-items: center;
-		
-					.price{
-						font-size: $font-lg ;
-						color: $uni-color-primary;
-						&:before{
-							content: '￥';
-							font-size: 34upx;
-						}
-					}
-				}
-			}
-			.tips{
-				padding-top: 10upx;
-				
-				font-size: $font-lg - 2upx;
-				color: #888888;
+			font-size: $font-lg - 2upx;
+			flex: 1;
+			.title{
+				font-size: $font-lg;
+				color: black;
+				padding-top: 20upx;
+				padding-bottom: 20upx;
 			}
 		}
+		.right{
+			display: flex;
+			flex-direction: column;
+			font-size: $font-lg - 2upx;
+			color: #888888;
+			justify-content: center;
+			align-items: center;
+
+			.price{
+				font-size: $font-lg ;
+				color: $uni-color-primary;
+				&:before{
+					content: '￥';
+					font-size: 34upx;
+				}
+			}
+		}
+	}
+	.tips{
+		padding-top: 10upx;
+		font-size: $font-lg - 2upx;
+		color: #888888;
 	}
 }
 </style>
