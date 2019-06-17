@@ -82,6 +82,13 @@
 				"navigationBarTitleText":"商品分类"
 			}
         }
+        ,{
+            "path" : "pages/produceList/produceList",
+            "style" : {
+				"navigationBarTitleText":"商品列表",
+				"enablePullDownRefresh":true
+			}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

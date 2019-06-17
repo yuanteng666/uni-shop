@@ -9,7 +9,7 @@
 			<view class="s-list" v-for="item in slist" :key='item.id' :id="'main-'+item.id">
 				<text class="s-item">{{item.name}}</text>
 				<view class="t-list">
-					<view v-for="titem in tlist" v-if="titem.pid === item.id" class="t-item" :key="titem.id">
+					<view v-for="titem in tlist" v-if="titem.pid === item.id" class="t-item" :key="titem.id"  @click="navToList(item.id, titem.id)">
 						<image :src="titem.picture"></image>
 						<text>{{titem.name}}</text>
 					</view>
@@ -63,14 +63,27 @@
 					this.calcSize();
 				}
 				let scrollTop = e.detail.scrollTop;
+				console.log("e.detail--->"+scrollTop)
+				//item top 小于scrollTop的有多个item ，翻转filter后的数组，根据翻转后的数组第一个判断左侧该选中哪一个
 				let tabs = this.slist.filter(item=>item.top <= scrollTop).reverse();
-				console.log(tabs)
+				
 				if(tabs.length > 0){
 					this.currentId = tabs[0].pid;
 				}
 			},
 			//计算右侧栏每个tab的高度等信息
 			calcSize(){
+				let height = 0;
+				this.slist.forEach(function(item){
+					let view = uni.createSelectorQuery().select("#main-"+item.id)
+					view.fields({
+						size:true
+					},data=>{
+						item.top = h;
+						h += data.height;
+						item.bottom = h;
+					}).exec();
+				})
 				let h = 0;
 				this.slist.forEach(item=>{
 					let view = uni.createSelectorQuery().select("#main-" + item.id);
@@ -80,13 +93,14 @@
 						item.top = h;
 						h += data.height;
 						item.bottom = h;
+						console.log('item top'+item.top)
 					}).exec();
 				})
 				this.sizeCalcState = true;
 			},
 			navToList(sid, tid){
 				uni.navigateTo({
-					url: `/pages/product/list?fid=${this.currentId}&sid=${sid}&tid=${tid}`
+					url: `/pages/produceList/produceList?fid=${this.currentId}&sid=${sid}&tid=${tid}`
 				})
 			}
 		}
