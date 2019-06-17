@@ -16,6 +16,26 @@
 			</view>
 			<text class="cate-item yticon icon-fenlei1" @click="toggleCateMask('show')"></text>
 		</view>
+		
+		<view class="goods-list">
+			<view 
+				v-for="(item, index) in goodsList" :key="index"
+				class="goods-item"
+				@click="navToDetailPage(item)"
+			>
+				<view class="image-wrapper">
+					<image :src="item.image" mode="aspectFill"></image>
+				</view>
+				<text class="title clamp">{{item.title}}</text>
+				<view class="price-box">
+					<text class="price">{{item.price}}</text>
+					<text>已售 {{item.sales}}</text>
+				</view>
+			</view>
+		</view>
+		
+		<uni-load-more :status="loadingType"></uni-load-more>
+		
 	</view>
 </template>
 
@@ -171,18 +191,21 @@
 		padding-top: 96upx;
 	}
 	.navbar{
+		position: fixed;
+		left: 0;
+		top: 0;
 		display: flex;
 		flex-direction: row;
 		background: white;
 		width: 100%;
 		color: #333;
 		font-size: $font-lg;
-		height: 100upx;
+		height: 80upx;
 		align-items: center;
 		justify-content: space-around;
-	
+		box-shadow: 0 2upx 10upx rgba(0,0,0,.06);
 		.nav-item{
-			line-height: 100upx;
+			line-height: 80upx;
 			display: flex;
 			flex-direction: row;
 			justify-content: center;
@@ -191,6 +214,10 @@
 		.p-box{
 			display: flex;
 			flex-direction: column;
+			.xia{
+				transform: scaleY(-1);
+				margin-top: 10upx;
+			}
 		}
 		.active{
 			color: $uni-color-primary;
@@ -206,6 +233,69 @@
 		.current{
 			color: $uni-color-primary;
 			border-bottom: 4upx solid $uni-color-primary;
+		}
+		.cate-item{
+			height: 100%;
+			width: 80upx;
+			font-size: 44upx;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			position: relative;
+			&:after{
+				content: '';
+				position: absolute;
+				left: 0;
+				top: 50%;
+				width: 0upx;
+				height: 36upx;
+				transform: translateY(-50%);
+				border-left: 1upx solid #ddd;
+			}
+		}
+	}
+	.goods-list{
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		padding: 0 30upx;
+		.goods-item{
+			display: flex;
+			flex-direction: column;
+			width: 48%;
+			padding-bottom: 40upx;
+			&:nth-child(2n+1){
+				margin-right: 4%;
+			}
+			.image-wrapper{
+				width: 100%;
+				height: 330upx;
+				border-radius: 6upx;
+				image{
+					width: 100%;
+					height: 100%;
+				}
+			}
+			.title{
+				color: #333;
+				font-size: $font-lg - 2upx;
+			}
+			.price-box{
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				color: #ddd;
+				font-size: $font-lg - 4upx;
+				.price{
+					color: $uni-color-primary;
+					font-size: $font-lg - 2upx;
+					position: relative;
+					&:before{
+						content: "￥";
+						font-size: $font-lg - 4upx;
+					}
+				}
+			}
 		}
 	}
 </style>
