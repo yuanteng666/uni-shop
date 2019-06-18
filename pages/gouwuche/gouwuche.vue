@@ -11,7 +11,7 @@
 				<view class="navigator" @click="navToLogin">去登陆></view>
 			</view>
 		</view>
-		<view class="" v-else>
+		<view v-else>
 			<!-- 列表 -->
 			<view class="cart-list">
 				<block v-for="(item, index) in cartList" :key="item.id">
@@ -57,8 +57,12 @@
 </template>
 
 <script>
-	import {mapState} from 'vuex'
+	import {mapState} from 'vuex';
+	import uniNumberBox from '@/components/uni-number-box.vue'
 	export default {
+		components: {
+			uniNumberBox
+		},
 		data() {
 			return {
 				total: 0, //总价格
@@ -67,11 +71,124 @@
 				cartList: [],
 			}
 		},
+		onLoad(){
+			this.loadData();
+		},
+		watch:{
+			//显示空白页
+			cartList(e){
+				let empty = e.length === 0 ? true: false;
+				if(this.empty !== empty){
+					this.empty = empty;
+				}
+			}
+		},
 		computed: {
 			...mapState(['hasLogin'])
 		},
 		methods: {
+						//请求数据
+			async loadData(){
+				let list = await this.$api.json('cartList'); 
+				let cartList = list.map(item=>{
+					item.checked = true;
+					return item;
+				});
+				this.cartList = cartList;
+				this.calcTotal();  //计算总价
+			},
+			//监听image加载完成
+			onImageLoad(key, index) {
+				this.$set(this[key][index], 'loaded', 'loaded');
+			},
+			//监听image加载失败
+			onImageError(key, index) {
+				this[key][index].image = '/static/errorImage.jpg';
+			},
+			navToLogin(){
+				uni.navigateTo({
+					url: '/pages/public/login'
+				})
+			},
+			 //选中状态处理
+			check(type, index){
+				if(type === 'item'){
+					this.cartList[index].checked = !this.cartList[index].checked;
+				}else{
+					const checked = !this.allChecked
+					const list = this.cartList;
+					list.forEach(item=>{
+						item.checked = checked;
+					})
+					this.allChecked = checked;
+				}
+				this.calcTotal(type);
+			},
+			//数量
+			numberChange(data){
+				this.cartList[data.index].number = data.number;
+				this.calcTotal();
+			},
+			//删除
+			deleteCartItem(index){
+				let list = this.cartList;
+				let row = list[index];
+				let id = row.id;
 			
+				this.cartList.splice(index, 1);
+				this.calcTotal();
+				uni.hideLoading();
+			},
+			//清空
+			clearCart(){
+				uni.showModal({
+					content: '清空购物车？',
+					success: (e)=>{
+						if(e.confirm){
+							this.cartList = [];
+						}
+					}
+				})
+			},
+			//计算总价
+			calcTotal(){
+				let list = this.cartList;
+				if(list.length === 0){
+					this.empty = true;
+					return;
+				}
+				let total = 0;
+				let checked = true;
+				list.forEach(item=>{
+					if(item.checked === true){
+						total += item.price * item.number;
+					}else if(checked === true){
+						checked = false;
+					}
+				})
+				this.allChecked = checked;
+				this.total = Number(total.toFixed(2));
+			},
+			//创建订单
+			createOrder(){
+				let list = this.cartList;
+				let goodsData = [];
+				list.forEach(item=>{
+					if(item.checked){
+						goodsData.push({
+							attr_val: item.attr_val,
+							number: item.number
+						})
+					}
+				})
+			
+				uni.navigateTo({
+					url: `/pages/order/createOrder?data=${JSON.stringify({
+						goodsData: goodsData
+					})}`
+				})
+				this.$api.msg('跳转下一页 sendData');
+			}
 		}
 	}
 </script>
@@ -102,4 +219,52 @@
 		}
 	}
 }
+.cart-list{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		.cart-item{
+			padding:30upx 40upx;
+			display: flex;
+			flex-direction: row;
+			position: relative;
+			.image-wrapper{
+				width: 230upx;
+				height: 230upx;
+				position: relative;
+				image{
+					width: 100%;
+					height: 100%;
+					border-radius: 6upx;
+					padding: 10upx;
+				}
+				.checkbox{
+					position: absolute;
+					left: 0;
+					top: 0;
+				}
+				.checked{
+					color: $uni-color-primary;
+				}
+			}
+			.item-right{
+				display: flex;
+				flex-direction: column;
+				
+				color: #ccc;
+				font-size: 28upx;
+
+				.attr{
+					color: #ddd;
+					font-size: 26upx;
+				}
+
+			}
+			.del-btn{
+				position: absolute;
+				top: 0;
+				right: 0;
+			}
+		}
+	}
 </style>
