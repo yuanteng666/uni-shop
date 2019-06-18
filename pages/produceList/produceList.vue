@@ -36,6 +36,22 @@
 		
 		<uni-load-more :status="loadingType"></uni-load-more>
 		
+		<view class="cate-mask" :class="cateMaskState===0 ? 'none' : cateMaskState===1 ? 'show' : ''" @click="toggleCateMask">
+			<view class="cate-content" @click.stop.prevent="stopPrevent" @touchmove.stop.prevent="stopPrevent">
+				<scroll-view scroll-y class="cate-list">
+					<view v-for="item in cateList" :key="item.id">
+						<view class="cate-item b-b two">{{item.name}}</view>
+						<view 
+							v-for="tItem in item.child" :key="tItem.id" 
+							class="cate-item b-b" 
+							:class="{active: tItem.id==cateId}"
+							@click="changeCate(tItem)">
+							{{tItem.name}}
+						</view>
+					</view>
+				</scroll-view>
+			</view>
+		</view>
 	</view>
 </template>
 
@@ -66,14 +82,19 @@
 			this.loadCateList(options.fid,options.sid);
 			this.loadData();
 		},
-		onPageScroll() {
-			
+		onPageScroll(e) {
+				//兼容iOS端下拉时顶部漂移
+			if(e.scrollTop>=0){
+				this.headerPosition = "fixed";
+			}else{
+				this.headerPosition = "absolute";
+			}
 		},
 		onPullDownRefresh() {
-			
+			this.loadData('refresh');
 		},
 		onReachBottom() {
-			
+			this.loadData();
 		},
 		methods: {
 			//加载分类
@@ -120,6 +141,7 @@
 				
 				//判断是否还有下一页，有是more  没有是nomore(测试数据判断大于20就没有了)
 				this.loadingType  = this.goodsList.length > 20 ? 'nomore' : 'more';
+				
 				if(type === 'refresh'){
 					if(loading == 1){
 						uni.hideLoading()
@@ -175,7 +197,7 @@
 				//测试数据没有写id，用title代替
 				let id = item.title;
 				uni.navigateTo({
-					url: `/pages/product/product?id=${id}`
+					url: '../good-detail/good-detail?id='+id
 				})
 			},
 			stopPrevent(){}
@@ -218,6 +240,9 @@
 				transform: scaleY(-1);
 				margin-top: 10upx;
 			}
+			.active{
+				color: $uni-color-primary;
+			}
 		}
 		.active{
 			color: $uni-color-primary;
@@ -255,6 +280,7 @@
 		}
 	}
 	.goods-list{
+		background: white;
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
@@ -274,6 +300,7 @@
 				image{
 					width: 100%;
 					height: 100%;
+					opacity: 1;
 				}
 			}
 			.title{
@@ -295,7 +322,62 @@
 						font-size: $font-lg - 4upx;
 					}
 				}
+	
 			}
 		}
 	}
+.cate-mask{
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	top: var(--window-top);
+	background: rgba(0,0,0,0);
+	transition: 0.3s;
+	z-index: 95;
+	width: 100%;
+	
+	&.none{
+		display: none;
+	}
+	&.show{
+		background: rgba(0,0,0,.4);
+		.cate-content{
+			transform: translateX(0);
+		}
+	}
+	.cate-content{
+		background: white;
+		width: 630upx;
+		height: 100%;
+		text-align: right;
+		float: right;
+		transform: translateX(100%);
+		transition: 0.3s;
+		.cate-list{
+			display: flex;
+			flex-direction: column;
+			height: 100%;
+		}
+		.cate-item {
+			font-size: $font-lg ;
+			color: #333;
+			height: 90upx;
+			line-height: 90upx;
+			text-align: left;
+			padding-left: 30upx;
+		}
+		.two{
+			font-size: $font-lg - 2upx;
+			background: #ddd;
+			height: 64upx;
+			line-height: 64upx;
+		}
+		.b-b{
+			border: 1upx solid #888;
+		}
+		.active{
+			color: $uni-color-primary;
+		}
+	}
+}
 </style>
