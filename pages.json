@@ -101,9 +101,48 @@
 				"navigationBarTitleText":"登录",
 				"navigationStyle": "custom",
 				"app-plus": {
+					"type":"transparent",
+					"buttons":[{
+							"fontSrc": "/static/yticon.ttf",
+							"text": "\ue60f",
+							"fontSize": "24",
+							"color": "#303133",
+							"width": "46px",
+							"background": "rgba(0,0,0,0)"
+						},
+						{
+							"fontSrc": "/static/yticon.ttf",
+							"text": "\ue744",
+							"fontSize": "28",
+							"color": "#303133",
+							"background": "rgba(0,0,0,0)",
+							"redDot": true
+						}
+					]
+				}
+			}
+        }
+        ,{
+            "path" : "pages/me/me",
+            "style" : {
+				"navigationBarTitleText":"我的",
+				"navigationStyle": "custom",
+				"app-plus": {
 					"titleNView": false,
 					"animationType": "slide-in-bottom"
 				}
+			}
+        }
+        ,{
+            "path" : "pages/notice/notice",
+            "style" : {
+				"navigationBarTitleText":"通知"
+			}
+        }
+        ,{
+            "path" : "pages/setting/setting",
+            "style" : {
+				"navigationBarTitleText":"设置"
 			}
         }
     ],
@@ -134,13 +173,13 @@
 				"pagePath": "pages/gouwuche/gouwuche",
 				"iconPath": "static/tab-cart.png",
 				"selectedIconPath": "static/tab-cart-current.png",
-				"text": "分类"
+				"text": "购物车"
 			},
 			{
-				"pagePath": "pages/login/login",
-				"iconPath": "static/tab-cart.png",
-				"selectedIconPath": "static/tab-cart-current.png",
-				"text": "分类"
+				"pagePath": "pages/setting/setting",
+				"iconPath": "static/tab-my.png",
+				"selectedIconPath": "static/tab-my-current.png",
+				"text": "我的"
 			}
 		]
 	}
