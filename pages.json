@@ -62,7 +62,9 @@
         }
         ,{
             "path" : "pages/address/address",
-            "style" : {}
+            "style" : {
+				"navigationBarTitleText":"地址"
+			}
         }
         ,{
             "path" : "pages/pay/pay",
@@ -126,10 +128,31 @@
             "path" : "pages/me/me",
             "style" : {
 				"navigationBarTitleText":"我的",
+				// #ifdef MP
 				"navigationStyle": "custom",
+				// #endif
 				"app-plus": {
-					"titleNView": false,
-					"animationType": "slide-in-bottom"
+					"bounce": "none",
+					"titleNView": {
+						"type": "transparent",
+						"buttons": [{
+								"fontSrc": "/static/yticon.ttf",
+								"text": "\ue60f",
+								"fontSize": "24",
+								"color": "#303133",
+								"width": "46px",
+								"background": "rgba(0,0,0,0)"
+							},
+							{
+								"fontSrc": "/static/yticon.ttf",
+								"text": "\ue744",
+								"fontSize": "28",
+								"color": "#303133",
+								"background": "rgba(0,0,0,0)",
+								"redDot": true
+							}
+						]
+					}
 				}
 			}
         }
@@ -144,6 +167,16 @@
             "style" : {
 				"navigationBarTitleText":"设置"
 			}
+        }
+        ,{
+            "path" : "pages/order/order",
+            "style" : {
+				"navigationBarTitleText":"设置"
+			}
+        }
+        ,{
+            "path" : "pages/manageAddress/manageAddress",
+            "style" : {}
         }
     ],
 	"globalStyle": {
@@ -176,7 +209,7 @@
 				"text": "购物车"
 			},
 			{
-				"pagePath": "pages/setting/setting",
+				"pagePath": "pages/manageAddress/manageAddress",
 				"iconPath": "static/tab-my.png",
 				"selectedIconPath": "static/tab-my-current.png",
 				"text": "我的"

@@ -208,7 +208,7 @@
 				})
 			
 				uni.navigateTo({
-					url: `/pages/order/createOrder?data=${JSON.stringify({
+					url: `/pages/createOrder/createOrder?data=${JSON.stringify({
 						goodsData: goodsData
 					})}`
 				})
