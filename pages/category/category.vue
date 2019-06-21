@@ -73,17 +73,7 @@
 			},
 			//计算右侧栏每个tab的高度等信息
 			calcSize(){
-				let height = 0;
-				this.slist.forEach(function(item){
-					let view = uni.createSelectorQuery().select("#main-"+item.id)
-					view.fields({
-						size:true
-					},data=>{
-						item.top = h;
-						h += data.height;
-						item.bottom = h;
-					}).exec();
-				})
+				
 				let h = 0;
 				this.slist.forEach(item=>{
 					let view = uni.createSelectorQuery().select("#main-" + item.id);
