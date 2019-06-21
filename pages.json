@@ -12,7 +12,7 @@
 						"type":"transparent",
 						"searchInput":{
 							"align":"center",
-							"autoFocus":true,
+							"autoFocus":false,
 							"placeholder":"请输入地址 如：大钟寺",
 							"placeholderColor":"#606266",
 							"backgroundColor":"rgba(231, 231, 231,.7)",
@@ -171,7 +171,7 @@
         ,{
             "path" : "pages/order/order",
             "style" : {
-				"navigationBarTitleText":"设置"
+				"navigationBarTitleText":"我的订单"
 			}
         }
         ,{

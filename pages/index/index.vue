@@ -268,7 +268,32 @@
 					url: "../good-detail/good-detail"
 				})
 			},
+		},
+		// #ifndef MP
+		// 标题栏input搜索框点击
+		onNavigationBarSearchInputClicked: async function(e) {
+			this.$api.msg('点击了搜索框');
+		},
+		//点击导航栏 buttons 时触发
+		onNavigationBarButtonTap(e) {
+			const index = e.index;
+			if (index === 0) {
+				this.$api.msg('点击了扫描');
+			} else if (index === 1) {
+				// #ifdef APP-PLUS
+				const pages = getCurrentPages();
+				const page = pages[pages.length - 1];
+				const currentWebview = page.$getAppWebview();
+				currentWebview.hideTitleNViewButtonRedDot({
+					index
+				});
+				// #endif
+				uni.navigateTo({
+					url: '/pages/notice/notice'
+				})
+			}
 		}
+		// #endif
 	}
 </script>
 
